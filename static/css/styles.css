@@ -1,0 +1,240 @@
+/* 
+font-family: 'Didact Gothic', sans-serif;
+font-family: 'New Rocker', arial;
+font-family: 'Tangerine', arial; 
+*/
+
+body {
+  background-color: #0e1013;
+  /* background-color: red; */
+  position: relative;
+}
+
+/* .container-fluid {
+  padding: 5% 20%;
+} */
+
+/* Default CSS */
+h1,
+h2 {
+  color: #f39003;
+  font-family: "New Rocker", cursive;
+  text-shadow: 30rem;
+  text-shadow: 2px 2px 4px #000000;
+}
+
+/* h1 {
+  font-size: 1rem;
+} */
+/* 
+h2 {
+  font-size: 2rem;
+} */
+
+p {
+  font-family: "Didact Gothic", sans-serif;
+  color: #ffff;
+  font-size: 1.5rem;
+  line-height: 2;
+}
+
+.background-image {
+  --background-width: 3840px;
+  --background-height: 1440px;
+  --background-url: url("/static/images/wallpaper.png");
+  position: absolute;
+  width: 100%;
+  height: 120vh;
+  background: var(--background-url) no-repeat;
+  background-size: cover;
+}
+#background-top {
+  top: 0;
+  background-position: top;
+  -webkit-mask-image: linear-gradient(to top, transparent 50%, black 90%);
+  mask-image: linear-gradient(to top, transparent 50%, black 90%);
+  z-index: -1;
+}
+#background-bottom {
+  bottom: auto;
+  background-position: bottom;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 66%, black 90%);
+  mask-image: linear-gradient(to bottom, transparent 66%, black 90%);
+  z-index: -2;
+}
+
+.navbar {
+  background-color: transparent !important;
+}
+
+.navbar-brand {
+  font-family: "New Rocker", arial;
+  font-size: 2rem;
+  font-weight: lighter;
+  text-shadow: 2px 2px 4px #000000;
+}
+
+.header {
+  text-align: center;
+  /* padding-top: 7rem; */
+  /* padding-bottom: 4rem; */
+  padding: 4rem 0;
+}
+
+.header-text {
+  margin-bottom: 2%;
+  text-shadow: 4px 4px 8px #000000;
+}
+
+.header h1 {
+  color: #f0d24d;
+  /* -webkit-text-stroke-color: red;
+  -webkit-text-stroke-width: 1px; */
+  font-size: 8rem;
+  font-family: "New Rocker", consolas;
+}
+
+.header h2 {
+  font-size: 4rem;
+  font-family: "New Rocker", consolas;
+  /* -webkit-text-stroke-color: red;
+  -webkit-text-stroke-width: 2px; */
+}
+
+.btn {
+  font-family: "New Rocker", arial;
+  font-weight: bolder;
+  padding: 0.5% 2%;
+  font-size: 300%;
+  color: #f39003;
+  margin-top: 1rem;
+  margin-bottom: 0;
+  border: solid 2px #f39003;
+}
+
+#main-content {
+  z-index: 0;
+}
+
+#site-content {
+  margin: 0 10rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.site-content {
+  /* border: #f0d24d solid 5px; */
+  /* border-radius: 1%; */
+  margin-bottom: 5%;
+  /* background-color: rgba(0, 0, 0, 0.589); */
+  width: 75%;
+  padding: 0 7%;
+  /* padding: 0 9vh; */
+}
+
+.site-section {
+  margin: 5% 0;
+}
+
+#site-content h1 {
+  text-align: center;
+}
+
+#site-content p {
+  padding: 1rem 0;
+}
+
+.site-content-small {
+  border: solid 3px red;
+}
+
+#footer {
+  padding: 0 0 2%;
+  bottom: auto;
+  text-align: center;
+}
+
+.footer-text {
+  color: rgb(68, 68, 68);
+  font-size: 1.25rem;
+}
+
+@media only screen and (max-width: 1200px) {
+  p {
+    font-family: "Didact Gothic", sans-serif;
+    color: #ffff;
+    font-size: 1.15rem;
+    line-height: 2;
+  }
+
+  .header {
+    text-align: center;
+    /* padding-top: 7rem; */
+    /* padding-bottom: 4rem; */
+    padding: 2rem 0;
+  }
+
+  .header-text {
+    margin-bottom: 2%;
+    text-shadow: 4px 4px 8px #000000;
+  }
+
+  .header h1 {
+    color: #f0d24d;
+    /* -webkit-text-stroke-color: red;
+    -webkit-text-stroke-width: 1px; */
+    font-size: 4.5rem;
+    font-family: "New Rocker", consolas;
+  }
+
+  .header h2 {
+    font-size: 2rem;
+    font-family: "New Rocker", consolas;
+    /* -webkit-text-stroke-color: red;
+    -webkit-text-stroke-width: 2px; */
+  }
+
+  .btn {
+    font-family: "New Rocker", arial;
+    font-weight: bolder;
+    padding: 0.5% 2%;
+    font-size: 220%;
+    color: #f39003;
+    /* margin-top: 1rem; */
+    margin-bottom: 0;
+    border: solid 2px #f39003;
+  }
+
+  #site-content {
+    /* margin: 0 10rem; */
+    text-align: center;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  .site-content {
+    /* border: #f0d24d solid 5px; */
+    /* border-radius: 1%; */
+    margin-bottom: 5%;
+    /* background-color: rgba(0, 0, 0, 0.589); */
+    width: 75%;
+    /* padding: 0 7%; */
+    /* padding: 0 9vh; */
+  }
+
+  .site-section {
+    margin: 5% 0;
+  }
+
+  #site-content h1 {
+    text-align: center;
+  }
+
+  #site-content p {
+    padding: 1rem 0;
+  }
+
+  .site-content-small {
+    border: solid 3px red;
+  }
+}
