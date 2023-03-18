@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block foo %} {% endblock %}Warhammer - Sudenland Sunset</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Didact+Gothic&family=New+Rocker&family=Tangerine:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{{ url_for('static', filename='images/wizard-logo.png') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="https://darkwebwarlocks.com/">Darkweb Warlocks</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-end"
+          id="navbarNavAltMarkup"
+        >
+          <div class="navbar-nav">
+            <a class="nav-link" aria-current="page" href="/">Home</a>
+            <a class="nav-link" href="/character">Characters</a>
+            <a class="nav-link" href="/lunchlist">Lunch List</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div id="background-top" class="background-image"></div>
+    <main id="main-content">
+      <section id="header">
+        <div class="header container-fluid">
+          <h1 id="lmaohiddentext" class="header-text">
+            <span class="dubya">W</span>ARHAMMER
+          </h1>
+          <h2 class="header-text">Sudenland Sunset</h2>
+          {% block foundrybutton %}{% endblock %}
+        </div>
+      </section>
+
+      <section id="site-content">
+        <div class="container-fluid site-content">
+          {% block content %} {% endblock %}
+        </div>
+      </section>
+    </main>
+    <footer id="footer">
+      <p class="footer-text">Copyright Darkweb Warlocks</p>
+    </footer>
+    <!-- <div id="background-bottom" class="background-image"></div> -->
+    <script src="{{ url_for('static', filename='index.js')}}"></script>
+  </body>
+</html>

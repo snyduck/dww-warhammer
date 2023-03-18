@@ -1,152 +1,67 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Warhammer - Sudenland Sunset</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-      crossorigin="anonymous"
-    ></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Didact+Gothic&family=New+Rocker&family=Tangerine:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="icon"
-      type="image/x-icon"
-      href="{{ url_for('static', filename='images/wizard-logo.png') }}"
-    />
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/styles.css') }}"
-    />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-  </head>
-
-  <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">Darkweb Warlocks</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNavAltMarkup"
-          aria-controls="navbarNavAltMarkup"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div
-          class="collapse navbar-collapse justify-content-end"
-          id="navbarNavAltMarkup"
-        >
-          <div class="navbar-nav">
-            <!-- <a class="nav-link active" aria-current="page" href="#">Home</a> -->
-            <!-- <a class="nav-link" href="#">Games</a> -->
-          </div>
+{% extends "base.html" %}
+<!-- {% block title %}Index{% endblock %} -->
+<!-- {% block head %}
+{% endblock %} -->
+{% block foundrybutton %}
+<a
+class="btn btn-outline-secondary btn-lg header-text"
+href="https://darkwebwarlocks.com"
+>FOUNDRY</a
+>
+{% endblock %}
+{% block content %}
+<div class="row">
+  <div class="site-section">
+    <h1>Welcome to the Sudenland</h1>
+    <p>
+      You were born in, or arrived to, the Barony of Sonnefurt, a growing realm
+      in the southwestern hinterlands of the Empire. Positioned on both sides of
+      two rivers that meet at a fork, the Soll and the Sonne, the realm makes
+      the bulk of it's money by trade passing through it's stretches of the
+      river and roads. Dwarfs from Karak Hirn to the south as well as Tileans
+      and Bretonnians passing onwards from Kreutzhofen at the mouth of the River
+      Soll have begun to make Sonnefurt into a rising, prosperous crossroads!
+      While it is, in truth, still quite poor, it has an enviable position. Even
+      the Border Princes have begun to explore paths through the Black Mountains
+      to better reach the Icy Wind Pass road to the realm.
+    </p>
+    <p>
+      Despite this prosperity and general contentment, there are profound
+      troubles festering. Greenskins, ever a plague upon old Solland, have been
+      seen gathering in the forests. The Solland Independence movement, until
+      recently only a concern of the conservative folk out east, has within the
+      past year attempted to kill the Baroness von Heisenberg with explosives
+      beneath her favored winery!
+    </p>
+    <p>
+      While those responsible for this outrage were found and hanged, there are
+      growing rumbles of discontent among the common folk with the Baroness'
+      rule. Her steward, Tobias Brauer, the same steward her father had for his
+      entire life, has grown less diplomatic in his old age, no longer
+      displaying his previous skill at maneuvering the Council of Villages and
+      Guilds. The Council, until the Baroness' reign, was a vestigial aspect of
+      government - they are growing in wealth and power faster than most would
+      suspect.
+    </p>
+    <p>
+      It is into this that you were born and raised - perhaps you were recruited
+      into the 1st Sonnefurt Regiment of Foote as militia, or perhaps you have
+      grown up in Sonnefurt itself or one of the surrounding villages, moving to
+      the town for it's greater opportunities. Either way, with trouble comes
+      opportunity, and you hope to be part of that!
+    </p>
+  </div>
+  <!-- <div class="site-section">
+      <div class="row">
+        <div class="col-lg-6 site-content-small">
+          <h1>News</h1>
+          <p>Welcome to the news</p>
+        </div>
+        <div class="col-lg-6 site-content-small">
+          <h1>Classes</h1>
+          <p>Big classes. Huge.</p>
         </div>
       </div>
-    </nav>
-
-    <div id="background-top" class="background-image"></div>
-    <main id="main-content">
-      <section id="header">
-        <div class="header container-fluid">
-          <h1 id="lmaohiddentext" class="header-text">
-            <span class="dubya">W</span>ARHAMMER
-          </h1>
-          <h2 class="header-text">Sudenland Sunset</h2>
-          <a
-            class="btn btn-outline-secondary btn-lg header-text"
-            href="https://darkwebwarlocks.com"
-            >FOUNDRY</a
-          >
-        </div>
-      </section>
-
-      <section id="site-content">
-        <div class="container-fluid site-content">
-          <div class="row">
-            <div class="site-section">
-              <h1>Welcome to the Sudenland</h1>
-              <p>
-                You were born in, or arrived to, the Barony of Sonnefurt, a
-                growing realm in the southwestern hinterlands of the Empire.
-                Positioned on both sides of two rivers that meet at a fork, the
-                Soll and the Sonne, the realm makes the bulk of it's money by
-                trade passing through it's stretches of the river and roads.
-                Dwarfs from Karak Hirn to the south as well as Tileans and
-                Bretonnians passing onwards from Kreutzhofen at the mouth of the
-                River Soll have begun to make Sonnefurt into a rising,
-                prosperous crossroads! While it is, in truth, still quite poor,
-                it has an enviable position. Even the Border Princes have begun
-                to explore paths through the Black Mountains to better reach the
-                Icy Wind Pass road to the realm.
-              </p>
-              <p>
-                Despite this prosperity and general contentment, there are
-                profound troubles festering. Greenskins, ever a plague upon old
-                Solland, have been seen gathering in the forests. The Solland
-                Independence movement, until recently only a concern of the
-                conservative folk out east, has within the past year attempted
-                to kill the Baroness von Heisenberg with explosives beneath her
-                favored winery!
-              </p>
-              <p>
-                While those responsible for this outrage were found and hanged,
-                there are growing rumbles of discontent among the common folk
-                with the Baroness' rule. Her steward, Tobias Brauer, the same
-                steward her father had for his entire life, has grown less
-                diplomatic in his old age, no longer displaying his previous
-                skill at maneuvering the Council of Villages and Guilds. The
-                Council, until the Baroness' reign, was a vestigial aspect of
-                government - they are growing in wealth and power faster than
-                most would suspect.
-              </p>
-              <p>
-                It is into this that you were born and raised - perhaps you were
-                recruited into the 1st Sonnefurt Regiment of Foote as militia,
-                or perhaps you have grown up in Sonnefurt itself or one of the
-                surrounding villages, moving to the town for it's greater
-                opportunities. Either way, with trouble comes opportunity, and
-                you hope to be part of that!
-              </p>
-            </div>
-            <!-- <div class="site-section">
-              <div class="row">
-                <div class="col-lg-6 site-content-small">
-                  <h1>News</h1>
-                  <p>Welcome to the news</p>
-                </div>
-                <div class="col-lg-6 site-content-small">
-                  <h1>Classes</h1>
-                  <p>Big classes. Huge.</p>
-                </div>
-              </div>
-            </div> -->
-          </div>
-        </div>
-      </section>
-    </main>
-    <footer id="footer">
-      <p class="footer-text">Copyright Darkweb Warlocks</p>
-    </footer>
-    <!-- <div id="background-bottom" class="background-image"></div> -->
-    <script src="index.js"></script>
-  </body>
-</html>
+    </div> -->
+</div>
+{% endblock %}

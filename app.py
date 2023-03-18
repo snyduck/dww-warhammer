@@ -4,3 +4,13 @@ app = Flask(__name__)
 @app.route("/")
 def index():
     return render_template("index.html")
+
+@app.route("/character")
+def character():
+    print("Yes")
+    return render_template("character.html")
+
+@app.route("/lunchlist")
+def lunchlist():
+    print("Yes")
+    return render_template("lunchlist.html")

@@ -1,5 +1,5 @@
 function playSound() {
-    let sound = new Audio(('audio/wrong.mp3'))
+    let sound = new Audio(("{{ url_for('static', filename='audio/wrong.mp3') }}"))
     sound.play()
 }
 
