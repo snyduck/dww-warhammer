@@ -1,5 +1,38 @@
-{% extends "base.html" %}
-{% block content %}
-<h1>Characters</h1>
-<p>Coming soon</p>
+{% extends "base.html" %} {% block content %}
+<div class="container character-content">
+  <div class="row">
+    <h1 class="character-name-centered">{{ characterObject.name }}</h1>
+    <p class="character-quote">{{ characterObject.blurb }}</p>
+    <div class="col">
+      <h3>Class</h3>
+      <p>{{ characterObject.class }}</p>
+      <h3>Career Group</h3>
+      <p>{{ characterObject.charClass}}</p>
+      <h3>Distinguishing Mark</h3>
+      <p>{{characterObject.distinguishingMark}}</p>
+    </div>
+    <div class="col character-info-right">
+      <h3>Career</h3>
+      <p>{{characterObject.career}}</p>
+      <h3>Status</h3>
+      <p>{{characterObject.status}}</p>
+      <h3>Starsign</h3>
+      <p>{{characterObject.starsign}}</p>
+    </div>
+    <div class="col">
+      <!-- Placeholder wizard image -->
+      <img
+        src="/static/images/{{ characterObject.image }}"
+        alt=""
+        class="character-image"
+      />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <h3>Bio</h3>
+      <p>{{characterObject.bio}}</p>
+    </div>
+  </div>
+</div>
 {% endblock %}

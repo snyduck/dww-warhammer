@@ -16,7 +16,8 @@ body {
 
 /* Default CSS */
 h1,
-h2 {
+h2,
+h3 {
   color: #f39003;
   font-family: "New Rocker", cursive;
   text-shadow: 30rem;
@@ -37,6 +38,8 @@ p {
   font-size: 1.5rem;
   line-height: 2;
 }
+
+/* End Default CSS */
 
 .background-image {
   --background-width: 3840px;
@@ -84,12 +87,13 @@ p {
   text-align: center;
   /* padding-top: 7rem; */
   /* padding-bottom: 4rem; */
-  padding: 4rem 0;
+  padding-top: 1rem;
 }
 
 .header-text {
-  margin-bottom: 2%;
+  /* margin-bottom: 2%; */
   text-shadow: 4px 4px 8px #000000;
+  margin: 3rem 0;
 }
 
 .header h1 {
@@ -124,7 +128,6 @@ p {
 
 #site-content {
   margin: 0 10rem;
-  text-align: center;
   font-weight: bold;
 }
 
@@ -135,18 +138,20 @@ p {
   /* background-color: rgba(0, 0, 0, 0.589); */
   width: 75%;
   padding: 0 7%;
+  margin-top: 8rem;
   /* padding: 0 9vh; */
 }
 
 .site-section {
+  text-align: center;
   margin: 5% 0;
 }
 
-#site-content h1 {
+.site-section h1 {
   text-align: center;
 }
 
-#site-content p {
+.site-section p {
   padding: 1rem 0;
 }
 
@@ -165,11 +170,58 @@ p {
   font-size: 1.25rem;
 }
 
+/* Character page */
+.character-content {
+  background-color: #b9781c8e;
+  border-radius: 5%;
+  padding: 2%;
+}
+
+
+.character-name-centered {
+  text-align: center;
+  margin: 1rem 0 1rem;
+  /* margin-bottom: 8rem; */
+  font-size: 5rem;
+}
+
+
+.character-quote {
+  text-align: center;
+  text-decoration: dotted;
+  margin-bottom: 3rem;
+}
+
+.character-content h3 {
+  font-size: 2.25rem;
+}
+
+.character-content p {
+  font-size: 1.75rem;
+}
+
+.character-info {
+  font-size: 2.5rem;
+}
+
+.character-image {
+  width: 400px;
+  border-radius: 25% 15% 15% 3%;
+  /* border-top-left-radius: 25%; */
+  /* border-top-right-radius: 25%; */
+
+}
+
+/* Lunch page */
 .lunch-entry {
   font-family: "New Rocker", arial;
   font-size: 3rem;
   padding: 0;
   margin: 0;
+}
+
+.lunch {
+  text-align: center;
 }
 
 @media only screen and (max-width: 1200px) {
