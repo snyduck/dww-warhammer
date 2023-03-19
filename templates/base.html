@@ -60,7 +60,23 @@
           <div class="navbar-nav">
             <a class="nav-link" aria-current="page" href="/">Warhammer Home</a>
             <a class="nav-link" aria-current="page" href="/">Story</a>
-            <a class="nav-link" href="/character">Characters</a>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Characters
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/character/gusmerelda">Gusmerelda</a></li>
+                <li><a class="dropdown-item" href="/character/tumney">Tumney Firebrand</a></li>
+                <li><a class="dropdown-item" href="/character/urs">Urs Bearheart</a></li>
+                <li><a class="dropdown-item" href="/character/zoltan">Zoltan Sigurd Chivay</a></li>
+              </ul>
+            </li>
             <a class="nav-link" href="/character">Graveyard</a>
             <a class="nav-link" href="/lunchlist">Lunch List</a>
           </div>
@@ -71,7 +87,6 @@
     <div id="background-top" class="background-image"></div>
     <main id="main-content">
       {% block header %}{% endblock %}
-
 
       <section id="site-content">
         <div class="container-fluid site-content">
