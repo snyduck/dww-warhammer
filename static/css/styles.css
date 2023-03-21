@@ -228,6 +228,11 @@ p {
   text-align: center;
 }
 
+.error404 {
+  font-size: 10rem;
+  margin-bottom: 60rem;
+}
+
 @media only screen and (max-width: 1200px) {
   p {
     font-family: "Didact Gothic", sans-serif;

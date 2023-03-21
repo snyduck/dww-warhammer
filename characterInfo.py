@@ -10,21 +10,16 @@ class Character:
         self.bio = bio
         self.image = image
 
+
 def buildCharacter(dbInfo):
-    newCharObject = Character(name=dbInfo[2],
-                              blurb=dbInfo[4],
-                              charClass=dbInfo[8],
-                              career=dbInfo[9],
-                              status=dbInfo[12],
-                              distinguishingMark=dbInfo[10],
-                              starsign=dbInfo[11],
-                              bio=dbInfo[3],
-                              image=dbInfo[5]
+    newCharObject = Character(name=dbInfo.charName,
+                              blurb=dbInfo.charBlurb,
+                              charClass=dbInfo.charClass,
+                              career=dbInfo.charCareer,
+                              status=dbInfo.charStatus,
+                              distinguishingMark=dbInfo.charDistMark,
+                              starsign=dbInfo.charStar,
+                              bio=dbInfo.charBio,
+                              image=dbInfo.charImg
                               )
     return newCharObject
-
-
-# tumney = Character(blurb="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt"
-#                    ,name="tumney firebrand",charClass="rogue",career="foobar",status="alive",distinguishingMark="hair",starsign="drummer",bio="funny man")
-
-# print(tumney.bio)
