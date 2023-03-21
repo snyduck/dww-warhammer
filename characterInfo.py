@@ -19,7 +19,8 @@ def buildCharacter(dbInfo):
                               distinguishingMark=dbInfo[10],
                               starsign=dbInfo[11],
                               bio=dbInfo[3],
-                              image=dbInfo[5])
+                              image=dbInfo[5]
+                              )
     return newCharObject
 
 

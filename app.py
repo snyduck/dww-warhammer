@@ -23,7 +23,7 @@ def character(charname):
     try:
         dbInfo = charDBInfoGrab[0]
         charInfo = buildCharacter(dbInfo)
-        return render_template("character.html",characterObject=charInfo)
+        return render_template("character.html",characterObject=charInfo,charname=charname)
     except:
         print("Your shit didn't parse, dumbass")
         return render_template("index.html")
