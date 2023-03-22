@@ -18,6 +18,11 @@ def index():
     return render_template("index.html")
 
 
+@app.route("/story")
+def story():
+    return render_template("story.html")
+
+
 @app.route("/character/<charname>")
 def character(charname):
     stmt = text(f"SELECT * FROM war WHERE charname LIKE '{charname}%'")
@@ -38,6 +43,7 @@ def character(charname):
 @app.route("/lunchlist")
 def lunchlist():
     return render_template("lunchlist.html")
+
 
 @app.errorhandler(404)
 def page_not_found(e):

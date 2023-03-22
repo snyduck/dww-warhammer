@@ -213,7 +213,10 @@ p {
   border-radius: 25% 15% 15% 3%;
   /* border-top-left-radius: 25%; */
   /* border-top-right-radius: 25%; */
+}
 
+.character-image-col {
+  text-align: center;
 }
 
 /* Lunch page */
