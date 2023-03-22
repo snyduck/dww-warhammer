@@ -77,7 +77,7 @@ p {
   text-shadow: 2px 2px 4px #000000;
 }
 
-.dropdown-menu { 
+.dropdown-menu {
   margin-left: 3rem;
 }
 
@@ -181,14 +181,12 @@ p {
   padding: 2%;
 }
 
-
 .character-name-centered {
   text-align: center;
   margin: 1rem 0 1rem;
   /* margin-bottom: 8rem; */
   font-size: 5rem;
 }
-
 
 .character-quote {
   text-align: center;
@@ -314,21 +312,21 @@ p {
   .site-content-small {
     border: solid 3px red;
   }
-
 }
 
-@media only screen and (max-width: 1200px)  {
-
-    .character-attribute-header {
-    font-size: 1rem;
+@media only screen and (max-width: 1400px) {
+  .character-content h3 {
+    font-size: 1.6rem;
   }
 
+.character-attribute-entry {
+  font-size: 1.35rem !important;
+}
   .character-name-centered {
-    font-size: 4rem;
+    font-size: 3.6rem;
   }
 
   .character-image {
-    width: 350px;
+    width: 280px;
   }
-
 }
