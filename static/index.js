@@ -3,7 +3,6 @@
 //     sound.play()
 // }
 
-// $("span").on("click", function () {
-//     $("#lmaohiddentext").text("More like SNOREHAMMER");
-//     playSound()
-// })
+$("span").on("click", function () {
+    $("#lmaohiddentext").text("NOW WITH MORE TAXES!!!");
+})
