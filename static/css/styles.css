@@ -314,4 +314,21 @@ p {
   .site-content-small {
     border: solid 3px red;
   }
+
+}
+
+@media only screen and (max-width: 1200px)  {
+
+    .character-attribute-header {
+    font-size: 1rem;
+  }
+
+  .character-name-centered {
+    font-size: 4rem;
+  }
+
+  .character-image {
+    width: 350px;
+  }
+
 }
