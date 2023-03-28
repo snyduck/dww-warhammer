@@ -42,7 +42,19 @@ def character(charname):
 
 @app.route("/lunchlist")
 def lunchlist():
-    return render_template("lunchlist.html")
+    stmt = text(f"SELECT * FROM lunch WHERE isWeek = 'True'")
+    with Session(engine) as session:
+        result = session.execute(stmt)
+        for row in result:
+            playerID = row
+            
+    stmt = text(f"SELECT * FROM players WHERE playerID = {playerID.playerID}")
+    with Session(engine) as session:
+        result = session.execute(stmt)
+        for row in result:
+            playerName = row
+    print(f"Getting playername: {playerName.playerFirstName}")
+    return render_template("lunchlist.html",playerName=playerName.playerFirstName)
 
 
 @app.errorhandler(404)
