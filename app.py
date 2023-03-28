@@ -1,8 +1,5 @@
 from flask import Flask, render_template
 import os
-import sqlalchemy as sa
-from sqlalchemy import create_engine, text, select
-from sqlalchemy.orm import Session
 from flask import Flask, render_template
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
@@ -16,17 +13,19 @@ app.config["SQLALCHEMY_DATABASE_URI"] = f"mysql://{os.getenv('MYSQL_USER')}:{os.
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
 
+
 class players(db.Model):
     playerID = db.Column(db.Integer, primary_key=True)
     playerFirstName = db.Column(db.String, nullable=False)
     playerLastName = db.Column(db.String, nullable=False)
-    
+
+
 class lunch(db.Model):
     turnNumber = db.Column(db.Integer, primary_key=True)
     playerID = db.Column(db.Integer)
     isWeek = db.Column(db.String)
     lastWeek = db.Column(db.String)
-    
+
 
 class war(db.Model):
     charID = db.Column(db.Integer, primary_key=True)
@@ -44,9 +43,10 @@ class war(db.Model):
     charStatus = db.Column(db.String)
     charCareerGroup = db.Column(db.String)
 
+
 with app.app_context():
     db.create_all()
-    
+
 
 @app.route("/")
 def index():
@@ -60,10 +60,11 @@ def story():
 
 @app.route("/character/<charname>")
 def character(charname):
-    charDBInfo = db.session.execute(db.select(war).where(war.charName.like(f'{charname}%'))).scalar()
+    charDBInfo = db.session.execute(db.select(war).where(
+        war.charName.like(f'{charname}%'))).scalar()
     try:
         charInfo = buildCharacter(charDBInfo)
-        return render_template("character.html",characterObject=charInfo,charname=charname)
+        return render_template("character.html", characterObject=charInfo, charname=charname)
     except Exception as e:
         print(f"The query didn't parse for: {charname}")
         print(f"Error: {e}")
@@ -72,15 +73,14 @@ def character(charname):
 
 @app.route("/lunchlist")
 def lunchlist():
-    buyerID = db.session.execute(db.select(lunch.playerID).where(lunch.isWeek == "True")).scalar()
-    buyingPlayer = db.session.execute(db.select(players.playerFirstName).where(players.playerID == f"{buyerID}")).scalar()
+    buyerID = db.session.execute(
+        db.select(lunch.playerID).where(lunch.isWeek == "True")).scalar()
+    buyingPlayer = db.session.execute(db.select(players.playerFirstName).where(
+        players.playerID == f"{buyerID}")).scalar()
     print(f"Getting playername: {buyingPlayer}")
-    return render_template("lunchlist.html",buyingPlayer=buyingPlayer)
+    return render_template("lunchlist.html", buyingPlayer=buyingPlayer)
 
 
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
-
-# if __name__ == "__main__":
-#     app.run()
