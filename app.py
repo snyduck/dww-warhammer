@@ -1,17 +1,52 @@
 from flask import Flask, render_template
 import os
+import sqlalchemy as sa
 from sqlalchemy import create_engine, text, select
 from sqlalchemy.orm import Session
 from flask import Flask, render_template
+from flask import Flask, render_template, request
+from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv
-from connect_ttg_db import *
 from characterInfo import *
 load_dotenv('.env')
+
+db = SQLAlchemy()
 app = Flask(__name__)
+app.config["SQLALCHEMY_DATABASE_URI"] = f"mysql://{os.getenv('MYSQL_USER')}:{os.getenv('MYSQL_PASSWORD')}@{os.getenv('MYSQL_HOST')}:3306/{os.getenv('MYSQL_DB')}"
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db.init_app(app)
 
-engine = create_engine(
-    f"mysql://{os.getenv('MYSQL_USER')}:{os.getenv('MYSQL_PASSWORD')}@{os.getenv('MYSQL_HOST')}:3306/{os.getenv('MYSQL_DB')}", echo=True)
+class players(db.Model):
+    playerID = db.Column(db.Integer, primary_key=True)
+    playerFirstName = db.Column(db.String, nullable=False)
+    playerLastName = db.Column(db.String, nullable=False)
+    
+class lunch(db.Model):
+    turnNumber = db.Column(db.Integer, primary_key=True)
+    playerID = db.Column(db.Integer)
+    isWeek = db.Column(db.String)
+    lastWeek = db.Column(db.String)
+    
 
+class war(db.Model):
+    charID = db.Column(db.Integer, primary_key=True)
+    playerID = db.Column(db.Integer)
+    charName = db.Column(db.String)
+    charBio = db.Column(db.String)
+    charBlurb = db.Column(db.String)
+    charEpitaph = db.Column(db.String)
+    charImg = db.Column(db.String)
+    charDead = db.Column(db.Integer)
+    charClass = db.Column(db.String)
+    charCareer = db.Column(db.String)
+    charDistMark = db.Column(db.String)
+    charStar = db.Column(db.String)
+    charStatus = db.Column(db.String)
+    charCareerGroup = db.Column(db.String)
+
+with app.app_context():
+    db.create_all()
+    
 
 @app.route("/")
 def index():
@@ -25,15 +60,10 @@ def story():
 
 @app.route("/character/<charname>")
 def character(charname):
-    stmt = text(f"SELECT * FROM war WHERE charname LIKE '{charname}%'")
-    with Session(engine) as session:
-        result = session.execute(stmt)
-        for row in result:
-            charDBInfoGrab = row
+    charDBInfo = db.session.execute(db.select(war).where(war.charName.like(f'{charname}%'))).scalar()
     try:
-        dbInfo = charDBInfoGrab
-        charInfo = buildCharacter(dbInfo)
-        return render_template("character.html", characterObject=charInfo, charname=charname)
+        charInfo = buildCharacter(charDBInfo)
+        return render_template("character.html",characterObject=charInfo,charname=charname)
     except Exception as e:
         print(f"The query didn't parse for: {charname}")
         print(f"Error: {e}")
@@ -42,19 +72,10 @@ def character(charname):
 
 @app.route("/lunchlist")
 def lunchlist():
-    stmt = text(f"SELECT * FROM lunch WHERE isWeek = 'True'")
-    with Session(engine) as session:
-        result = session.execute(stmt)
-        for row in result:
-            playerID = row
-            
-    stmt = text(f"SELECT * FROM players WHERE playerID = {playerID.playerID}")
-    with Session(engine) as session:
-        result = session.execute(stmt)
-        for row in result:
-            playerName = row
-    print(f"Getting playername: {playerName.playerFirstName}")
-    return render_template("lunchlist.html",playerName=playerName.playerFirstName)
+    buyerID = db.session.execute(db.select(lunch.playerID).where(lunch.isWeek == "True")).scalar()
+    buyingPlayer = db.session.execute(db.select(players.playerFirstName).where(players.playerID == f"{buyerID}")).scalar()
+    print(f"Getting playername: {buyingPlayer}")
+    return render_template("lunchlist.html",buyingPlayer=buyingPlayer)
 
 
 @app.errorhandler(404)
