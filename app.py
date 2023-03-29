@@ -73,12 +73,17 @@ def character(charname):
 
 @app.route("/lunchlist")
 def lunchlist():
-    buyerID = db.session.execute(
-        db.select(lunch.playerID).where(lunch.isWeek == "True")).scalar()
-    buyingPlayer = db.session.execute(db.select(players.playerFirstName).where(
-        players.playerID == f"{buyerID}")).scalar()
-    print(f"Getting playername: {buyingPlayer}")
-    return render_template("lunchlist.html", buyingPlayer=buyingPlayer)
+    try:
+        buyerID = db.session.execute(
+            db.select(lunch.playerID).where(lunch.isWeek == "True")).scalar()
+        buyingPlayer = db.session.execute(db.select(players.playerFirstName).where(
+            players.playerID == f"{buyerID}")).scalar()
+        print(f"Getting playername: {buyingPlayer}")
+        return render_template("lunchlist.html", buyingPlayer=buyingPlayer)
+    except Exception as e:
+        print(f"An issue occured fetching info for lunch:")
+        print(f"Error: {e}")
+        return render_template("index.html")
 
 
 @app.errorhandler(404)
