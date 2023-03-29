@@ -1,8 +1,6 @@
-from flask import Flask, render_template
-import os
-from flask import Flask, render_template
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
+import os
 from dotenv import load_dotenv
 from characterInfo import *
 load_dotenv('.env')
