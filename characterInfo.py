@@ -1,5 +1,5 @@
 class Character:
-    def __init__(self, name, blurb, charClass, career, status, distinguishingMark, starsign, bio, image):
+    def __init__(self, name, blurb, charClass, career, status, distinguishingMark, starsign, bio, image, epitaph):
         self.name = name
         self.blurb = blurb
         self.charClass = charClass
@@ -9,6 +9,7 @@ class Character:
         self.starsign = starsign
         self.bio = bio
         self.image = image
+        self.epitaph = epitaph
 
 
 def buildCharacter(dbInfo):
@@ -20,6 +21,7 @@ def buildCharacter(dbInfo):
                               distinguishingMark=dbInfo.charDistMark,
                               starsign=dbInfo.charStar,
                               bio=dbInfo.charBio,
-                              image=dbInfo.charImg
+                              image=dbInfo.charImg,
+                              epitaph = dbInfo.charEpitaph
                               )
     return newCharObject

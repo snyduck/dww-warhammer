@@ -67,7 +67,19 @@ def character(charname):
         print(f"The query didn't parse for: {charname}")
         print(f"Error: {e}")
         return render_template("index.html")
+    
 
+@app.route("/graveyard/<charname>")
+def graveyard(charname):
+    charDBInfo = db.session.execute(db.select(war).where(
+        war.charName.like(f'{charname}%'))).scalar()
+    try:
+        charInfo = buildCharacter(charDBInfo)
+        return render_template("deadcharacter.html", characterObject=charInfo, charname=charname)
+    except Exception as e:
+        print(f"The query didn't parse for: {charname}")
+        print(f"Error: {e}")
+        return render_template("index.html")
 
 @app.route("/lunchlist")
 def lunchlist():

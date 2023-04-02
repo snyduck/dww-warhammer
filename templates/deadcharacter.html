@@ -1,0 +1,43 @@
+{% extends "base.html" %} {% block content %}
+<div class="container character-content">
+  <div class="row">
+    <h1 class="character-name-centered">{{ characterObject.name }}</h1>
+    <p class="character-quote">{{ characterObject.blurb }}</p>
+    <div class="col">
+      <h3 class="character-attribute-header">Class</h3>
+      <p class="character-attribute-entry">{{ characterObject.charClass }}</p>
+      <h3 class="character-attribute-header">Career Group</h3>
+      <p class="character-attribute-entry">{{ characterObject.charClass}}</p>
+      <h3 class="character-attribute-header">Distinguishing Mark</h3>
+      <p class="character-attribute-entry">{{characterObject.distinguishingMark}}</p>
+    </div>
+    <div class="col character-info-right">
+      <h3 class="character-attribute-header">Career</h3>
+      <p class="character-attribute-entry">{{characterObject.career}}</p>
+      <h3 class="character-attribute-header">Status</h3>
+      <p class="character-attribute-entry">{{characterObject.status}}</p>
+      <h3 class="character-attribute-header">Starsign</h3>
+      <p class="character-attribute-entry">{{characterObject.starsign}}</p>
+    </div>
+    <div class="col character-image-col">
+      <!-- Placeholder wizard image -->
+      <img
+        src="/static/images/character-portraits/{{ charname }}.png"
+        alt=""
+        class="character-image"
+      />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <h3>Bio</h3>
+      <p>{{characterObject.bio}}</p>
+    </div>
+  </div>
+  <div class="col">
+    <h3>Epitaph</h3>
+    <p>{{characterObject.epitaph}}</p>
+  </div>
+</div>
+</div>
+{% endblock %}
