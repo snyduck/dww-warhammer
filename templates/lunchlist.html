@@ -6,6 +6,7 @@
       <h1>Who's buying?</h1>
       <p class="lunch-entry" id="jd">JD</p>
       <p class="lunch-entry" id="ben">Ben</p>
+      <p class="lunch-entry" id="legare">Legare</p>
       <p class="lunch-entry" id="gio">Gio</p>
       <p class="lunch-entry" id="hannah">Hannah</p>
       <p class="lunch-entry" id="charlie">Charlie</p>
@@ -13,5 +14,7 @@
   </div>
 </div>
 <script src="{{url_for('static',filename='lunchList.js')}}"></script>
-<script type="text/javascript">setLunchBuyer("{{ buyingPlayer }}")</script>
+<script type="text/javascript">
+  setLunchBuyer("{{ buyingPlayer }}");
+</script>
 {% endblock%}
