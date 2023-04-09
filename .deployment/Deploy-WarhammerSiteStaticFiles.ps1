@@ -47,16 +47,14 @@ function Deploy-WarhammerSiteStaticFiles {
         New-LogEntry -Severity "FAIL" -Message "An error occured copying the 'images' folder`n:$_"
     }
 
-    if ($pull) {
-        Write-Host "Pulling files from Git..."
-        try {
-            $sshSession = New-SSHSession -ComputerName $web01IP -Credential $Credential
-            $result = Invoke-ssHCommand -Command "cd /var/www/warhammer.darkwebwarlocks.com && git pull" -SessionId $sshSession.SessionId
-            New-LogEntry -Severity "SUCCESS" -Message "Git pull initiated! Output: $($result.Output)"
-        }
-        catch {
+    Write-Host "Pulling files from Git..."
+    try {
+        $sshSession = New-SSHSession -ComputerName $web01IP -Credential $Credential
+        $result = Invoke-ssHCommand -Command "cd /var/www/warhammer.darkwebwarlocks.com && git pull" -SessionId $sshSession.SessionId
+        New-LogEntry -Severity "SUCCESS" -Message "Git pull initiated! Output: $($result.Output)"
+    }
+    catch {
         New-LogEntry -Severity "FAIL" -Message "An error occured invoking a Git pull`n:$_"
-        }    
     }
 
     Send-Log
