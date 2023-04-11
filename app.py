@@ -94,6 +94,10 @@ def lunchlist():
         print(f"An issue occured fetching info for lunch:")
         print(f"Error: {e}")
         return render_template("index.html")
+    
+@app.route("/foo")
+def foo():
+    return "Bar!"
 
 
 @app.errorhandler(404)
