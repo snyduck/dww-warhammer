@@ -97,7 +97,7 @@ def lunchlist():
     
 @app.route("/foo")
 def foo():
-    return "Bar!"
+    return "Foo and Bar!"
 
 
 @app.errorhandler(404)
