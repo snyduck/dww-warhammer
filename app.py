@@ -67,7 +67,7 @@ def character(charname):
         print(f"The query didn't parse for: {charname}")
         print(f"Error: {e}")
         return render_template("index.html")
-    
+
 
 @app.route("/graveyard/<charname>")
 def graveyard(charname):
@@ -80,6 +80,7 @@ def graveyard(charname):
         print(f"The query didn't parse for: {charname}")
         print(f"Error: {e}")
         return render_template("index.html")
+
 
 @app.route("/lunchlist")
 def lunchlist():
@@ -94,10 +95,6 @@ def lunchlist():
         print(f"An issue occured fetching info for lunch:")
         print(f"Error: {e}")
         return render_template("index.html")
-    
-@app.route("/foo")
-def foo():
-    return "Foo and Bar!"
 
 
 @app.errorhandler(404)
