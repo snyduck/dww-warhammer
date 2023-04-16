@@ -20,14 +20,14 @@ class players(db.Model):
 
 class lunch(db.Model):
     turnNumber = db.Column(db.Integer, primary_key=True)
-    playerID = db.Column(db.Integer)
+    playerID = db.Column(db.Integer, db.ForeignKey('players.playerID'))
     isWeek = db.Column(db.String)
     lastWeek = db.Column(db.String)
 
 
 class war(db.Model):
     charID = db.Column(db.Integer, primary_key=True)
-    playerID = db.Column(db.Integer)
+    playerID = db.Column(db.Integer, db.ForeignKey('players.playerID'))
     charName = db.Column(db.String)
     charBio = db.Column(db.String)
     charBlurb = db.Column(db.String)
@@ -85,12 +85,19 @@ def graveyard(charname):
 @app.route("/lunchlist")
 def lunchlist():
     try:
-        buyerID = db.session.execute(
-            db.select(lunch.playerID).where(lunch.isWeek == "True")).scalar()
-        buyingPlayer = db.session.execute(db.select(players.playerFirstName).where(
-            players.playerID == f"{buyerID}")).scalar()
-        print(f"Getting playername: {buyingPlayer}")
-        return render_template("lunchlist.html", buyingPlayer=buyingPlayer)
+        buyerQuery = db.session.execute(
+            db.text(
+                'SELECT * FROM players INNER JOIN lunch ON lunch.playerID = players.playerID WHERE isWeek = "True"')
+        )
+        buyerInfo = buyerQuery.all()[0]
+
+        allPlayerLunchInfo = buyerQuery = db.session.execute(
+            db.text(
+                'SELECT * FROM players INNER JOIN lunch ON lunch.playerID = players.playerID ORDER BY turnNumber')
+        )
+        allPlayerLunchInfo = buyerQuery.all()
+
+        return render_template("lunchlist.html", buyingPlayer=buyerInfo, allPlayerLunchInfo=allPlayerLunchInfo)
     except Exception as e:
         print(f"An issue occured fetching info for lunch:")
         print(f"Error: {e}")

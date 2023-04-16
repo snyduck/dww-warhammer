@@ -4,17 +4,14 @@
   <div>
     <div class="row lunch">
       <h1>Who's buying?</h1>
-      <p class="lunch-entry" id="jd">JD</p>
-      <p class="lunch-entry" id="ben">Ben</p>
-      <p class="lunch-entry" id="legare">Legare</p>
-      <p class="lunch-entry" id="gio">Gio</p>
-      <p class="lunch-entry" id="hannah">Hannah</p>
-      <p class="lunch-entry" id="charlie">Charlie</p>
+      {% for player in allPlayerLunchInfo %}
+      <p class="lunch-entry" id="{{ player.playerFirstName }}">{{ player.playerFirstName }}</p>
+      {% endfor %}
     </div>
   </div>
 </div>
 <script src="{{url_for('static',filename='lunchList.js')}}"></script>
 <script type="text/javascript">
-  setLunchBuyer("{{ buyingPlayer }}");
+  setLunchBuyer("{{ buyingPlayer.playerFirstName }}");
 </script>
 {% endblock%}
