@@ -1,9 +1,9 @@
 function Deploy-WarhammerSiteStaticFiles {
     [CmdletBinding()]
     param (
-        [Parameter(Mandatory = $True)]
-        [pscredential]
-        $Credential
+        # [Parameter(Mandatory = $True)]
+        # [pscredential]
+        # $Credential
     )
 
     $date = Get-Date -Format 'MM-dd-yyyy_hh-mm'
@@ -12,11 +12,16 @@ function Deploy-WarhammerSiteStaticFiles {
         Import-Module Posh-SSH
     }
 
+    if (!(Get-Module -Name CredentialModule)) {
+        Import-Module CredentialModule
+    }
+
     if (!(Get-Module -Name "logging")) {
         Import-Module "$env:userprofile\OneDrive\Dev\!powershell\Logging\logging.psm1"
     }
     Initialize-Log -OutputChannels @("Screen", "File") -FilePath "$env:userprofile\OneDrive\Dev\_sites\_deployment\logs\warhammer_deploy_$date.txt"
 
+    $credential = Get-StoredCredential -target "web02-root"
     $web01IP = "10.0.30.6"
     $archiveFilePath = "$env:userprofile\OneDrive\Dev\_sites\_archive\warhammer.darkwebwarlocks.com_$date.zip"
 
