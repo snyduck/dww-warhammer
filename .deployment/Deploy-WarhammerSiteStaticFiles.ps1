@@ -12,8 +12,8 @@ function Deploy-WarhammerSiteStaticFiles {
         Import-Module Posh-SSH
     }
 
-    if (!(Get-Module -Name CredentialModule)) {
-        Import-Module CredentialModule
+    if (!(Get-Module -Name credentialmanager)) {
+        Import-Module credentialmanager
     }
 
     if (!(Get-Module -Name "logging")) {
