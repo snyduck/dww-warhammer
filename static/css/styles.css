@@ -1,18 +1,9 @@
-/* 
-font-family: 'Didact Gothic', sans-serif;
-font-family: 'New Rocker', arial;
-font-family: 'Tangerine', arial; 
-*/
-
 body {
   background-color: #0e1013;
   /* background-color: red; */
   position: relative;
 }
 
-/* .container-fluid {
-  padding: 5% 20%;
-} */
 
 /* Default CSS */
 h1,
@@ -24,14 +15,6 @@ h3 {
   text-shadow: 2px 2px 4px #000000;
 }
 
-/* h1 {
-  font-size: 1rem;
-} */
-/* 
-h2 {
-  font-size: 2rem;
-} */
-
 p {
   font-family: "Didact Gothic", sans-serif;
   color: #ffff;
@@ -40,6 +23,8 @@ p {
 }
 
 /* End Default CSS */
+
+/* General CSS */
 
 .background-image {
   --background-width: 3840px;
@@ -89,21 +74,18 @@ p {
 
 .header {
   text-align: center;
-  /* padding-top: 7rem; */
-  /* padding-bottom: 4rem; */
   padding-top: 1rem;
 }
 
 .header-text {
-  /* margin-bottom: 2%; */
   text-shadow: 4px 4px 8px #000000;
   margin: 3rem 0;
 }
 
 .header h1 {
   color: #f0d24d;
-  /* -webkit-text-stroke-color: red;
-  -webkit-text-stroke-width: 1px; */
+  -webkit-text-stroke-color: red;
+  -webkit-text-stroke-width: 1px;
   font-size: 8rem;
   font-family: "New Rocker", consolas;
 }
@@ -174,7 +156,15 @@ p {
   font-size: 1.25rem;
 }
 
-/* Character page */
+.content-box {
+  background-color: #b9781c8e;
+  border-radius: 5%;
+  padding: 2%;
+}
+
+/* End of General Settings */
+
+/* Character Page */
 .character-content {
   background-color: #b9781c8e;
   border-radius: 5%;
@@ -209,15 +199,15 @@ p {
 .character-image {
   width: 400px;
   border-radius: 25% 15% 15% 3%;
-  /* border-top-left-radius: 25%; */
-  /* border-top-right-radius: 25%; */
 }
 
 .character-image-col {
   text-align: center;
 }
 
-/* Lunch page */
+/* End of Character Page */
+
+/* Lunch Page */
 .lunch-entry {
   font-family: "New Rocker", arial;
   font-size: 3rem;
@@ -234,6 +224,10 @@ p {
   margin-bottom: 60rem;
 }
 
+/* End of Lunch Page */
+
+
+/* Adaptive Settings */
 @media only screen and (max-width: 1200px) {
   p {
     font-family: "Didact Gothic", sans-serif;
@@ -337,3 +331,5 @@ p {
     margin: 0 0.5rem;
   }
 }
+
+/* End of Adaptive Settings */

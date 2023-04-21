@@ -42,6 +42,19 @@ class war(db.Model):
     charCareerGroup = db.Column(db.String)
 
 
+class war_journal_entry(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String)
+    entry = db.Column(db.String)
+    date = db.Column(db.String)
+
+
+class LunchEntry():
+    def __init__(self, name, turn_number):
+        self.name = name
+        self.turn_number = turn_number
+
+
 with app.app_context():
     db.create_all()
 
@@ -53,7 +66,13 @@ def index():
 
 @app.route("/story")
 def story():
-    return render_template("story.html")
+    entryResult = db.session.execute(db.select(war_journal_entry)).scalars()
+    entries = entryResult.all()
+    if len(entries) == 0:
+        print("No entries in journal table!")
+        return render_template("comingsoon.html")
+    else:
+        return render_template("story.html", entries=entries)
 
 
 @app.route("/character/<charname>")
