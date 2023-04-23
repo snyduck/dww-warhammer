@@ -45,7 +45,7 @@ function Deploy-WarhammerSiteStaticFiles {
 
     Write-Host "Copying images folder..."
     try {
-        Set-SFTPItem -SessionId $SFTPSession.SessionId -Path "$env:Userprofile\OneDrive\Dev\_sites\warhammer.darkwebwarlocks.com\static\images" -Destination "/var/www/warhammer.darkwebwarlocks.com" -Force        
+        Set-SFTPItem -SessionId $SFTPSession.SessionId -Path "$env:Userprofile\OneDrive\Dev\_sites\warhammer.darkwebwarlocks.com\static\images" -Destination "/var/www/warhammer.darkwebwarlocks.com\static\images" -Force        
         New-LogEntry -Severity "SUCCESS" -Message "Static files copied!"
     }
     catch {
