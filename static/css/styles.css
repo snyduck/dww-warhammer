@@ -323,6 +323,11 @@ p {
   .character-image {
     width: 280px;
   }
+
+  .site-content {
+    padding: 0px;
+    width: 100%;
+  }
 }
 
 @media only screen and (max-width: 1520px) {
