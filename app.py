@@ -4,12 +4,22 @@ import os
 from dotenv import load_dotenv
 from characterInfo import *
 load_dotenv('.env')
+import logging
 
 db = SQLAlchemy()
 app = Flask(__name__)
+
+if __name__ != '__main__':
+    gunicorn_logger = logging.getLogger('gunicorn.error')
+    app.logger.handlers = gunicorn_logger.handlers
+    app.logger.setLevel(gunicorn_logger.level)
+    
+
 app.config["SQLALCHEMY_DATABASE_URI"] = f"mysql://{os.getenv('MYSQL_USER')}:{os.getenv('MYSQL_PASSWORD')}@{os.getenv('MYSQL_HOST')}:3306/{os.getenv('MYSQL_DB')}"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
+gunicorn_logger = logging.getLogger('gunicorn.error')
+app.logger.handlers = gunicorn_logger.handlers
 
 
 class players(db.Model):
@@ -69,7 +79,7 @@ def story():
     entryResult = db.session.execute(db.select(war_journal_entry)).scalars()
     entries = entryResult.all()
     if len(entries) == 0:
-        print("No entries in journal table!")
+        app.logger.info("No entries in journal table!")
         return render_template("comingsoon.html")
     else:
         return render_template("story.html", entries=entries)
@@ -77,14 +87,15 @@ def story():
 
 @app.route("/character/<charname>")
 def character(charname):
+    app.logger.info(f"Retrieving DB entries for ${charname}")
     charDBInfo = db.session.execute(db.select(war).where(
         war.charName.like(f'{charname}%'))).scalar()
     try:
         charInfo = buildCharacter(charDBInfo)
         return render_template("character.html", characterObject=charInfo, charname=charname)
     except Exception as e:
-        print(f"The query didn't parse for: {charname}")
-        print(f"Error: {e}")
+        app.logger.error(f"The query didn't parse for: {charname}")
+        app.logger.error(f"Error: {e}")
         return render_template("index.html")
 
 
@@ -96,8 +107,8 @@ def graveyard(charname):
         charInfo = buildCharacter(charDBInfo)
         return render_template("deadcharacter.html", characterObject=charInfo, charname=charname)
     except Exception as e:
-        print(f"The query didn't parse for: {charname}")
-        print(f"Error: {e}")
+        app.logger.error(f"The query didn't parse for: {charname}")
+        app.logger.error(f"Error: {e}")
         return render_template("index.html")
 
 
@@ -118,8 +129,8 @@ def lunchlist():
 
         return render_template("lunchlist.html", buyingPlayer=buyerInfo, allPlayerLunchInfo=allPlayerLunchInfo)
     except Exception as e:
-        print(f"An issue occured fetching info for lunch:")
-        print(f"Error: {e}")
+        app.logger.error(f"An issue occured fetching info for lunch:")
+        app.logger.error(f"Error: {e}")
         return render_template("index.html")
 
 
