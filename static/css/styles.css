@@ -2,6 +2,7 @@ body {
   background-color: #0e1013;
   /* background-color: red; */
   position: relative;
+  min-height: 100vh;
 }
 
 
@@ -32,7 +33,7 @@ p {
   --background-url: url("/static/images/wallpaper.png");
   position: absolute;
   width: 100%;
-  height: 120vh;
+  height: 100vh;
   background: var(--background-url) no-repeat;
   background-size: cover;
 }
@@ -44,7 +45,7 @@ p {
   z-index: -1;
 }
 #background-bottom {
-  bottom: auto;
+  bottom: 0;
   background-position: bottom;
   -webkit-mask-image: linear-gradient(to bottom, transparent 66%, black 90%);
   mask-image: linear-gradient(to bottom, transparent 66%, black 90%);
